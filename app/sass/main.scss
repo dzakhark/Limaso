@@ -126,38 +126,46 @@ a {
 
 /*-----------header-----------*/
 .header {
-	&-wrapper {
-		max-width: 1920px;
-		min-height: 130px;
-		margin: 0 auto;
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-	}
+	background-color: #ffffff;
+	position: fixed;
+	height: 130px;
+	width: 100vw;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	transition: all .3s ease;
 	&__logo {
-		width: 170px;
+		min-width: 170px;
 		height: 65px;
 		margin-left: 30px;
+		margin-right: 20px;
 		background-image: url("../img/LogoS.png");
 		background-repeat: no-repeat;
 		background-position: center;
 	}
 	.header__nav {
-		min-width: 1170px;
+		max-width: 1170px;
 		display: flex;
 		justify-content: space-around;
 	}
 	.nav-item {
 		font-size: 16px;
 		text-transform: uppercase;
+		text-align: center;
+		padding-right: 35px;
+		&:last-child {
+			padding-right: 0;
+		}
 	}
 	.header__icons {
 		margin-right: 30px;
-		width: 170px;
+		min-width: 170px;
+		text-align: right;
 	}
 	.icon {
 		padding: 15px;
 		position: relative;
+		display: inline-block;
 		&.shopcart[data-empty=false]::after {
 			content: '1';
 			display: inline-block;
@@ -176,6 +184,19 @@ a {
 	}
 }
 
+.sticky {
+	top: 0;
+	left: 0;
+	z-index: 1000;
+	height: 100px;
+	box-shadow: 0 4px 11px -2px rgba(0,0,0,0.58);
+}
+
+/* Add some top padding to the page content to prevent sudden quick movement (as the header gets a new position at the top of the page (position:fixed and top:0) */
+.sticky + .bunner {
+	margin-top: 130px;
+}
+
 .white {
 	color: #ffffff;
 }
@@ -187,6 +208,7 @@ a {
 
 /*-----------bunner-----------*/
 .bunner {
+	margin-top: 130px;
 	padding: 60px 0;
 	background: url("../img/banner-small.png");
 	background-position: center;
@@ -482,6 +504,7 @@ a {
 		background-repeat: no-repeat;
 		background-size: cover;
 		background-position: center;
+		background-color: #f4f5f5;
 	}
 
 	.new {
@@ -505,7 +528,6 @@ a {
 	}
 
 	.description {
-		//width: 78%;
 		font-size: 16px;
 		padding-top: 18px;
 		line-height: 24px;
@@ -544,25 +566,29 @@ a {
 
 .container {
 	max-width: 1180px;
+	padding: 0 10px;
 	margin: 0 auto;
 }
 
 .empty {
-	height: 560px;
+	height: 590px;
 }
 
 
 /*-----------footer-----------*/
 .footer {
-	height: 560px;
-	margin-top: -560px;
-	background: #333333;
+	height: 590px;
+	margin-top: -590px;
+	background: url("../img/bg-footer.jpg");
+	background-repeat: repeat;
 	position: relative;
 	text-align: center;
+	color: #8e8e8e;
 
 	.logo {
 		display: inline-block;
 		margin-top: 50px;
+		margin-bottom: 60px;
 		width: 126px;
 		height: 49px;
 		background-image: url("../img/LogoSwhite.png");
@@ -573,6 +599,89 @@ a {
 	&__content {
 		display: flex;
 		justify-content: space-between;
+	}
+
+	.content-item {
+		//flex-grow: 1;
+		width: 22%;
+		text-align: left;
+		font-size: 14px;
+	}
+
+	.store-list, .for-client-list, .additionally-list{
+		padding-left: 15px;
+		li {
+			margin-bottom: 10px;
+		}
+		li, li a {
+			color: #8e8e8e;
+			transition: color .1s ease;
+			&:hover {
+				color: $accent;
+			}
+		}
+	}
+
+	.copy {
+		text-align: left;
+		font-size: 14px;
+		margin-top: 81px;
+		padding: 23px 0;
+		background-color: #2d2d2d;
+	}
+}
+
+.about {
+	width: 100%;
+
+	.adress, .phone {
+		display: flex;
+	}
+
+	.phone {
+		margin-top: 20px;
+	}
+
+	.adress .text {
+		font-weight: 600;
+	}
+
+	.home-icon {
+		margin: 5px 12px 0 0;
+	}
+
+	.phone-icon {
+		margin: 5px 9px 0 0;
+	}
+
+	.card {
+		display: flex;
+		margin-top: 30px;
+		align-items: center;
+		.icon {
+			margin-right: 15px;
+		}
+	}
+}
+
+.footer-caption {
+	font-size: 16px;
+	color: #ffffff;
+	margin-left: 15px;
+	margin-bottom: 50px;
+	text-transform: uppercase;
+	position: relative;
+	font-weight: 300;
+	&::before {
+		content: '';
+		display: block;
+		width: 2px;
+		height: 18px;
+		background-color: $accent;
+		line-height: 25px;
+		position: absolute;
+		top: 2px;
+		left: -15px;
 	}
 }
 

@@ -2338,10 +2338,11 @@ a {
       border: 2px solid #c5803f; }
 
 /*-----------header-----------*/
-.header-wrapper {
-  max-width: 1920px;
-  min-height: 130px;
-  margin: 0 auto;
+.header {
+  background-color: #ffffff;
+  position: fixed;
+  height: 130px;
+  width: 100vw;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2353,52 +2354,69 @@ a {
   -webkit-box-align: center;
   -webkit-align-items: center;
       -ms-flex-align: center;
-          align-items: center; }
-
-.header__logo {
-  width: 170px;
-  height: 65px;
-  margin-left: 30px;
-  background-image: url("../img/LogoS.png");
-  background-repeat: no-repeat;
-  background-position: center; }
-
-.header .header__nav {
-  min-width: 1170px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-justify-content: space-around;
-      -ms-flex-pack: distribute;
-          justify-content: space-around; }
-
-.header .nav-item {
-  font-size: 16px;
-  text-transform: uppercase; }
-
-.header .header__icons {
-  margin-right: 30px;
-  width: 170px; }
-
-.header .icon {
-  padding: 15px;
-  position: relative; }
-  .header .icon.shopcart[data-empty=false]::after {
-    content: '1';
-    display: inline-block;
-    width: 18px;
-    height: 18px;
-    position: absolute;
-    top: 7px;
-    right: 3px;
+          align-items: center;
+  -webkit-transition: all .3s ease;
+  -o-transition: all .3s ease;
+  transition: all .3s ease; }
+  .header__logo {
+    min-width: 170px;
+    height: 65px;
+    margin-left: 30px;
+    margin-right: 20px;
+    background-image: url("../img/LogoS.png");
+    background-repeat: no-repeat;
+    background-position: center; }
+  .header .header__nav {
+    max-width: 1170px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-justify-content: space-around;
+        -ms-flex-pack: distribute;
+            justify-content: space-around; }
+  .header .nav-item {
+    font-size: 16px;
+    text-transform: uppercase;
     text-align: center;
-    font-size: 10px;
-    font-weight: 600;
-    color: #ffffff;
-    background-color: #cb8d53;
-    -webkit-border-radius: 50%;
-            border-radius: 50%; }
+    padding-right: 35px; }
+    .header .nav-item:last-child {
+      padding-right: 0; }
+  .header .header__icons {
+    margin-right: 30px;
+    min-width: 170px;
+    text-align: right; }
+  .header .icon {
+    padding: 15px;
+    position: relative;
+    display: inline-block; }
+    .header .icon.shopcart[data-empty=false]::after {
+      content: '1';
+      display: inline-block;
+      width: 18px;
+      height: 18px;
+      position: absolute;
+      top: 7px;
+      right: 3px;
+      text-align: center;
+      font-size: 10px;
+      font-weight: 600;
+      color: #ffffff;
+      background-color: #cb8d53;
+      -webkit-border-radius: 50%;
+              border-radius: 50%; }
+
+.sticky {
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  height: 100px;
+  -webkit-box-shadow: 0 4px 11px -2px rgba(0, 0, 0, 0.58);
+          box-shadow: 0 4px 11px -2px rgba(0, 0, 0, 0.58); }
+
+/* Add some top padding to the page content to prevent sudden quick movement (as the header gets a new position at the top of the page (position:fixed and top:0) */
+.sticky + .bunner {
+  margin-top: 130px; }
 
 .white {
   color: #ffffff; }
@@ -2408,6 +2426,7 @@ a {
 
 /*-----------bunner-----------*/
 .bunner {
+  margin-top: 130px;
   padding: 60px 0;
   background: url("../img/banner-small.png");
   background-position: center;
@@ -2648,7 +2667,8 @@ a {
     background-repeat: no-repeat;
     -webkit-background-size: cover;
             background-size: cover;
-    background-position: center; }
+    background-position: center;
+    background-color: #f4f5f5; }
   .product-item .new {
     display: none;
     position: absolute;
@@ -2699,21 +2719,25 @@ a {
 
 .container {
   max-width: 1180px;
+  padding: 0 10px;
   margin: 0 auto; }
 
 .empty {
-  height: 560px; }
+  height: 590px; }
 
 /*-----------footer-----------*/
 .footer {
-  height: 560px;
-  margin-top: -560px;
-  background: #333333;
+  height: 590px;
+  margin-top: -590px;
+  background: url("../img/bg-footer.jpg");
+  background-repeat: repeat;
   position: relative;
-  text-align: center; }
+  text-align: center;
+  color: #8e8e8e; }
   .footer .logo {
     display: inline-block;
     margin-top: 50px;
+    margin-bottom: 60px;
     width: 126px;
     height: 49px;
     background-image: url("../img/LogoSwhite.png");
@@ -2728,6 +2752,74 @@ a {
     -webkit-justify-content: space-between;
         -ms-flex-pack: justify;
             justify-content: space-between; }
+  .footer .content-item {
+    width: 22%;
+    text-align: left;
+    font-size: 14px; }
+  .footer .store-list, .footer .for-client-list, .footer .additionally-list {
+    padding-left: 15px; }
+    .footer .store-list li, .footer .for-client-list li, .footer .additionally-list li {
+      margin-bottom: 10px; }
+    .footer .store-list li, .footer .store-list li a, .footer .for-client-list li, .footer .for-client-list li a, .footer .additionally-list li, .footer .additionally-list li a {
+      color: #8e8e8e;
+      -webkit-transition: color .1s ease;
+      -o-transition: color .1s ease;
+      transition: color .1s ease; }
+      .footer .store-list li:hover, .footer .store-list li a:hover, .footer .for-client-list li:hover, .footer .for-client-list li a:hover, .footer .additionally-list li:hover, .footer .additionally-list li a:hover {
+        color: #cb8d53; }
+  .footer .copy {
+    text-align: left;
+    font-size: 14px;
+    margin-top: 81px;
+    padding: 23px 0;
+    background-color: #2d2d2d; }
+
+.about {
+  width: 100%; }
+  .about .adress, .about .phone {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex; }
+  .about .phone {
+    margin-top: 20px; }
+  .about .adress .text {
+    font-weight: 600; }
+  .about .home-icon {
+    margin: 5px 12px 0 0; }
+  .about .phone-icon {
+    margin: 5px 9px 0 0; }
+  .about .card {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    margin-top: 30px;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center; }
+    .about .card .icon {
+      margin-right: 15px; }
+
+.footer-caption {
+  font-size: 16px;
+  color: #ffffff;
+  margin-left: 15px;
+  margin-bottom: 50px;
+  text-transform: uppercase;
+  position: relative;
+  font-weight: 300; }
+  .footer-caption::before {
+    content: '';
+    display: block;
+    width: 2px;
+    height: 18px;
+    background-color: #cb8d53;
+    line-height: 25px;
+    position: absolute;
+    top: 2px;
+    left: -15px; }
 
 /*==========  Desktop First  ==========*/
 /* Large Devices, Wide Screens */

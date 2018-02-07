@@ -1,5 +1,18 @@
 $(function() {
 
+    window.onscroll = function() {myFunction()};
+    var header = document.getElementsByClassName("header")[0];
+    var sticky = header.offsetHeight + 20;
+
+    function myFunction() {
+        console.log(window.pageYOffset + "  " + sticky);
+        if (window.pageYOffset > sticky) {
+            header.classList.add("sticky");
+        } else {
+            header.classList.remove("sticky");
+        }
+    }
+
     var priceFromElem = $('.price-from');
     var priceToElem = $('.price-to');
     priceFromElem.val(0);
@@ -8,7 +21,7 @@ $(function() {
     var priceFrom = priceFromElem.val().length ? $('.price-from').val() : 0;
     var priceTo = priceToElem.val().length ? $('.price-to').val() : 1400;
 
-    $('.range-form').on('change', function (e) {
+    $('.range-form').on('change', function () {
         priceFrom = priceFromElem.val();
         priceTo = priceToElem.val();
         if (priceFrom > priceTo) {

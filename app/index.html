@@ -11,7 +11,6 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-	<!--<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">-->
 	<link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
 
 	<meta property="og:image" content="path/to/image.jpg">
@@ -32,9 +31,56 @@
 </head>
 
 <body>
+
+	<div id="modal-form-buy" class="modal">
+		<div class="modal-close"></div>
+		<form class="buy-form">
+			<div class="modal-title">Данные банковской карты</div>
+			<div class="card-first">
+				<p class="number">Номер карты</p>
+				<div class="number-inputs">
+					<input class="item" type="text" maxlength="4">
+					<input class="item" type="text" maxlength="4">
+					<input class="item" type="text" maxlength="4">
+					<input class="item" type="text" maxlength="4">
+				</div>
+				<div class="error number"></div>
+				<p class="date">Срок действия</p>
+				<select class="date-month">
+					<option selected="selected">- -</option>
+				</select>
+				<select class="date-year">
+					<option selected="selected">- -</option>
+					<option>2018</option>
+					<option>2019</option>
+					<option>2020</option>
+					<option>2021</option>
+				</select>
+				<div class="error date"></div>
+				<input type="text" class="owner" placeholder="Держатель карты">
+				<div class="error name"></div>
+			</div>
+
+			<div class="card-second">
+				<div class="line"></div>
+				<p class="code">Код CVV2 / CVC2</p>
+				<input type="text" class="code input" placeholder="000" maxlength="3">
+				<div class="error code">В поле должно быть 3 цифры</div>
+			</div>
+			<button type="submit" name="btn" class="send">отправить</button>
+		</form>
+	</div>
+	<div id="modal-ajax" class="modal">
+		<div class="modal-close"></div>
+		<div class="modal-title"></div>
+		<p class="p1"></p>
+		<p class="p2"></p>
+	</div>
+
+	<div id="overlay"></div><!-- Пoдлoжкa, oднa нa всю стрaницу -->
+
 	<div class="wrapper">
 		<header class="header">
-			<!--<div class="header-wrapper">-->
 				<a href="#">
 					<div class="header__logo"></div>
 				</a>
@@ -55,8 +101,13 @@
 					<a href="#" class="icon shopcart" data-empty="false">
 						<i class="fa fa-shopping-cart"></i>
 					</a>
+					<button class="hamburger hamburger--spring" type="button">
+					  <span class="hamburger-box">
+						<span class="hamburger-inner"></span>
+					  </span>
+					</button>
 				</div>
-			<!--</div>-->
+
 		</header>
 
 			<section class="bunner">
@@ -67,12 +118,12 @@
 							изысканный дизайн
 						</p>
 						<p class="title brown">
-							теплых прокрывал
+							теплых покрывал
 						</p>
 						<p class="text white">
 							Смотрите и выбирайте, который вам по душе
 						</p>
-						<a href="#" class="btn btn-look">смотреть</a>
+						<a href="#modal-ajax" class="btn btn-look">смотреть</a>
 					</div>
 				</div>
 			</section>
@@ -178,7 +229,7 @@
 								</div>
 							</div>
 							<div class="buy">
-								<a href="#" class="btn-buy">
+								<a href="#modal-form-buy" class="btn-buy">
 									<i class="fa fa-shopping-cart"></i>
 								</a>
 							</div>
@@ -198,7 +249,7 @@
 								</div>
 							</div>
 							<div class="buy">
-								<a href="#" class="btn-buy">
+								<a href="#modal-form-buy" class="btn-buy">
 									<i class="fa fa-shopping-cart"></i>
 								</a>
 							</div>
@@ -218,12 +269,53 @@
 								</div>
 							</div>
 							<div class="buy">
-								<a href="#" class="btn-buy">
+								<a href="#modal-form-buy" class="btn-buy">
 									<i class="fa fa-shopping-cart"></i>
 								</a>
 							</div>
 						</div>
 					</div>
+
+					<div class="product-item" data-new="true">
+						<div class="img"></div>
+						<div class="new">новинка</div>
+						<div class="bottom-panel">
+							<div class="description">
+								<div class="name">
+									Покрывало гобеленовое PLG03
+								</div>
+								<div class="price brown">
+									170грн
+								</div>
+							</div>
+							<div class="buy">
+								<a href="#modal-form-buy" class="btn-buy">
+									<i class="fa fa-shopping-cart"></i>
+								</a>
+							</div>
+						</div>
+					</div>
+
+					<div class="product-item" data-new="true">
+						<div class="img"></div>
+						<div class="new">новинка</div>
+						<div class="bottom-panel">
+							<div class="description">
+								<div class="name">
+									Покрывало гобеленовое PLG03
+								</div>
+								<div class="price brown">
+									170грн
+								</div>
+							</div>
+							<div class="buy">
+								<a href="#modal-form-buy" class="btn-buy">
+									<i class="fa fa-shopping-cart"></i>
+								</a>
+							</div>
+						</div>
+					</div>
+
 
 					<div class="product-item" data-new="false">
 						<div class="img"></div>
@@ -238,7 +330,7 @@
 								</div>
 							</div>
 							<div class="buy">
-								<a href="#" class="btn-buy">
+								<a href="#modal-form-buy" class="btn-buy">
 									<i class="fa fa-shopping-cart"></i>
 								</a>
 							</div>
@@ -254,7 +346,7 @@
 
 	<footer class="footer">
 		<div class="container">
-			<div class="logo"></div>
+			<div class="footer__logo"></div>
 			<div class="footer__content">
 				<div class="content-item">
 					<div class="footer-caption">
@@ -336,7 +428,9 @@
 			</div>
 		</div>
 	</footer>
-	
+
+
+
 	<link rel="stylesheet" href="css/main.min.css">
 
 	<script src="js/scripts.min.js"></script>
